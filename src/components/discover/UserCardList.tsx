@@ -3,6 +3,7 @@
 import UserCard from "./UserCard"
 
 type User = {
+  id: number
   name: string
   age: number
   image: string
@@ -15,9 +16,9 @@ export default function UserCardList({ users }: { users: User[] }) {
 
       <div className="w-full max-w-sm">
 
-        {users.map((user, index) => (
+        {users.map((user) => (
           <UserCard
-            key={index}
+            key={user.id}
             name={user.name}
             age={user.age}
             image={user.image}
