@@ -1,5 +1,7 @@
 "use client"
 
+import ActionButtons from "./ActionButtons"
+
 type Props = {
   name: string
   age: number
@@ -7,6 +9,15 @@ type Props = {
 }
 
 export default function UserCard({ name, age, image }: Props) {
+
+  const handleLike = () => {
+    console.log("Liked:", name)
+  }
+
+  const handlePass = () => {
+    console.log("Passed:", name)
+  }
+
   return (
     <div className="relative mb-6 rounded-3xl overflow-hidden shadow-lg">
 
@@ -17,9 +28,18 @@ export default function UserCard({ name, age, image }: Props) {
 
       <div className="absolute bottom-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent text-white">
 
-        <h2 className="text-xl font-semibold">
-          {name}, {age}
-        </h2>
+        <div className="flex items-center justify-between">
+
+          <h2 className="text-xl font-semibold">
+            {name}, {age}
+          </h2>
+
+          <ActionButtons
+            onLike={handleLike}
+            onPass={handlePass}
+          />
+
+        </div>
 
       </div>
 
