@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Inter } from "next/font/google"
 import StatusModal from "@/components/StatusModal"
+import router, { useRouter } from "next/navigation"
 
 
 const inter = Inter({ subsets: ["latin"] })
@@ -15,6 +16,7 @@ export default function LoginPage() {
   const [modalOpen, setModalOpen] = useState(false)
   const [modalType, setModalType] = useState<"success" | "error">("success")
   const [modalMessage, setModalMessage] = useState("")
+  const router = useRouter()
   
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -36,6 +38,11 @@ export default function LoginPage() {
     if (data.success) {
         setModalType("success")
         setModalMessage("Нэвтрэлт амжилттай.")
+        
+        setTimeout(() => {
+            setModalOpen(false)
+            router.push("/discover")
+        }, 2000)
     } else {
       setModalType("error")
         setModalMessage(data.message || "Нэвтрэлт амжилтгүй.")

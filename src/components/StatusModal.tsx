@@ -1,6 +1,7 @@
 "use client"
 
 import { Inter } from "next/font/google"
+import { useEffect } from "react"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -18,19 +19,36 @@ export default function StatusModal({
   onClose
 }: Props) {
 
-  if (!isOpen) return null
-
   const isSuccess = type === "success"
+
+  useEffect(() => {
+    if (isOpen) {
+      const timer = setTimeout(() => {
+        onClose()
+      }, 2000)
+
+      return () => clearTimeout(timer)
+    }
+  }, [isOpen, onClose])
+
+  if (!isOpen) return null
 
   return (
     <div
       className={`${inter.className} fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-50`}
     >
 
-      <div className="bg-white w-full max-w-sm rounded-2xl p-8 text-center shadow-xl">
+      <div
+        className="bg-white w-full max-w-sm rounded-2xl p-8 text-center shadow-xl 
+        animate-[popup_.25s_ease-out]"
+      >
 
         {/* icon */}
-        <div className="text-4xl mb-4">
+        <div
+          className={`text-5xl mb-4 ${
+            isSuccess ? "text-[#D70040]" : "text-red-500"
+          } animate-bounce`}
+        >
           {isSuccess ? "✔" : "✖"}
         </div>
 
@@ -44,17 +62,9 @@ export default function StatusModal({
         </h2>
 
         {/* message */}
-        <p className="text-gray-500 mb-6">
+        <p className="text-gray-500">
           {message}
         </p>
-
-        {/* button */}
-        <button
-          onClick={onClose}
-          className="w-full bg-[#D70040] text-white py-3 rounded-full font-semibold hover:opacity-90 transition"
-        >
-          OK
-        </button>
 
       </div>
 
