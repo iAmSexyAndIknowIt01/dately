@@ -57,7 +57,7 @@ export default function DatelyLandingPage() {
       {/* HERO */}
       <section className="relative px-6 py-32 flex flex-col items-center text-center overflow-hidden">
 
-        <div className="absolute inset-0 bg-gradient-to-b from-[#D70040]/10 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-b from-[#D70040]/10 to-transparent" />
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}

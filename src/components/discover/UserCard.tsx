@@ -23,10 +23,10 @@ export default function UserCard({ name, age, image }: Props) {
 
       <img
         src={image}
-        className="w-full h-[420px] object-cover"
+        className="w-full h-105 object-cover"
       />
 
-      <div className="absolute bottom-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent text-white">
+      <div className="absolute bottom-0 w-full p-6 bg-linear-to-t from-black/70 to-transparent text-white">
 
         <div className="flex items-center justify-between">
 

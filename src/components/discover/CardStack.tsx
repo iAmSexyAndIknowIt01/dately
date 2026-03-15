@@ -39,7 +39,7 @@ export default function CardStack({ users }: { users: User[] }) {
   return (
     <div className="flex justify-center pt-16">
 
-      <div className="relative w-[360px] h-[520px]">
+      <div className="relative w-90 h-130">
 
         <AnimatePresence>
 
@@ -70,7 +70,7 @@ export default function CardStack({ users }: { users: User[] }) {
               className="w-full h-full object-cover"
             />
 
-            <div className="absolute bottom-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent text-white">
+            <div className="absolute bottom-0 w-full p-6 bg-linear-to-t from-black/70 to-transparent text-white">
 
               <div className="flex items-center justify-between">
 
